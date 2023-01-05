@@ -1,10 +1,15 @@
 import React from 'react';
-import {View} from 'react-native';
+import {Text} from 'react-native';
 import TodoItem from './TodoItem';
 import {useAppContext} from '../context/AppContext';
 
 export default function TodoList() {
   const {todos} = useAppContext();
-  console.log(todos);
-  return todos.map(item => <TodoItem key={item.id} item={item} />);
+  return todos.length ? (
+    todos.map(item => <TodoItem key={item.id} item={item} />)
+  ) : (
+    <Text style={{color: '#222F3E', fontSize: 16, paddingTop: 20}}>
+      У вас пока нет заявок, скорее добавьте!
+    </Text>
+  );
 }

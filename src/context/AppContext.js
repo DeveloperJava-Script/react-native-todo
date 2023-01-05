@@ -33,7 +33,9 @@ const AppProvider = ({children}) => {
 
   const getTodos = async () => {
     const items = await AsyncStorage.getItem('todos');
-    setTodos(JSON.parse(items));
+    if (items) {
+      setTodos(JSON.parse(items));
+    }
   };
 
   useEffect(() => {
